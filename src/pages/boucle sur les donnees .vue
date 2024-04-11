@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+const sectionOpen = ref(0)
 const sectionsData = [
     {
       label: 'bouton 1',
@@ -33,8 +34,8 @@ const sectionsData = [
   <h1>boucle sur les données</h1>
   <section v-for="({ label, texte }, key) of sectionsData" :key="key">
     <pre class="font-mono">key : {{ key }}</pre>
-    <pre class="font-mono">label : {{ label }}</pre>
-    <pre class="font-mono">texte : {{ texte }}</pre>
+    <pre  @pointerdown="sectionOpen = sectionOpen == (key+1) ? 0: (key+1)" class="font-mono">label : {{ label }}</pre>
+    <pre v-show="sectionOpen === (key+1)" class="font-mono">texte : {{ texte }}</pre>
   </section>
 </template>
 
