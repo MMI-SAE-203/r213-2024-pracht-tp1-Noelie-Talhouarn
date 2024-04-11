@@ -1,11 +1,12 @@
-<script setup lang="ts">
-import { onErrorCaptured } from 'vue'
+<script setup lang="ts" >
+import { onErrorCaptured, ref } from 'vue'
 import { RouterLink, RouterView } from 'vue-router/auto'
 
 onErrorCaptured((err, instance, info) => {
   console.error('erreur : ', err, '\ninfo : ', info, '\ncomposant : ', instance)
   return true
 })
+const menuIsOpen = ref(false)
 </script>
 
 <template>
@@ -33,6 +34,7 @@ onErrorCaptured((err, instance, info) => {
       <li><a href="#">item 3</a></li>
     </ul>
   </nav>
+ 
   </header>
   
   <RouterView v-slot="{ Component }">
